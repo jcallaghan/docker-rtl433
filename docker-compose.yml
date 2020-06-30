@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  rtl_433:
+    image: rtl_433:latest
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    devices:
+      - /dev/bus/usb/001/006:/dev/bus/usb/001/006
+    network_mode: host
+    env_file: rtl_433.env
